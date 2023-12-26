@@ -1,16 +1,88 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Replit Asian Paints</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        #grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-template-rows: repeat(3, 100px);
+            grid-gap: 10px;
+        }
+
+        .grid-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+            background-color: transparent;
+            cursor: pointer;
+        }
+
+        #block_id, #colour_id {
+            margin-bottom: 10px;
+        }
+
+        #change_button, #reset_button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
 </head>
-
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
+    <input type="number" id="block_id" placeholder="Enter Block ID (1-9)">
+    <input type="color" id="colour_id" placeholder="Choose Color">
+    <button id="change_button" onclick="changeColor()">Change Color</button>
+    <button id="reset_button" onclick="resetColors()">Reset</button>
 
+    <div id="grid-container">
+        <div id="1" class="grid-item" onclick="selectGrid(1)">1</div>
+        <div id="2" class="grid-item" onclick="selectGrid(2)">2</div>
+        <div id="3" class="grid-item" onclick="selectGrid(3)">3</div>
+        <div id="4" class="grid-item" onclick="selectGrid(4)">4</div>
+        <div id="5" class="grid-item" onclick="selectGrid(5)">5</div>
+        <div id="6" class="grid-item" onclick="selectGrid(6)">6</div>
+        <div id="7" class="grid-item" onclick="selectGrid(7)">7</div>
+        <div id="8" class="grid-item" onclick="selectGrid(8)">8</div>
+        <div id="9" class="grid-item" onclick="selectGrid(9)">9</div>
+    </div>
+
+    <script>
+        function changeColor() {
+            const blockId = document.getElementById('block_id').value;
+            const color = document.getElementById('colour_id').value;
+
+            if (blockId >= 1 && blockId <= 9) {
+                document.getElementById(blockId).style.backgroundColor = color;
+            } else {
+                alert('Please enter a valid block ID (1-9).');
+            }
+        }
+
+        function resetColors() {
+            for (let i = 1; i <= 9; i++) {
+                document.getElementById(i).style.backgroundColor = 'transparent';
+            }
+        }
+
+        function selectGrid(blockId) {
+            document.getElementById('block_id').value = blockId;
+        }
+    </script>
 </body>
-
 </html>
